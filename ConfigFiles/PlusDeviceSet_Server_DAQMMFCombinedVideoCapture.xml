@@ -1,0 +1,79 @@
+ <PlusConfiguration version="2.1">
+
+  <DataCollection StartupDelaySec="1.0" >
+    <DeviceSet
+      Name="PlusServer: Combined DAQ USB3-FRM13-B Grabber (CameraLink) and MMF VideoCapture"
+      Description="Broadcasting acquired video through PlusServer from a DAQ USB3-FRM13-B Grabber (CameraLink) and MMF Camera"
+    />
+    <Device
+      Id="VideoDevice_DAQMMF"
+      Type="DAQMMFCombinedVideo" 
+      DataMode="16"
+      FrameSize="640 480"
+      VideoFormat="YUY2"
+      CaptureDeviceId="0" 
+      MMFDataSourceName="Video_MMF"
+      DAQDataSourceName="Video_DAQ"
+      AcquisitionRate="60"
+	  >
+      <DataSources>
+        <DataSource Type="Video" Id="Video_MMF" PortUsImageOrientation="MF" ImageType="RGB_COLOR"  />
+		<DataSource Type="Video" Id="Video_DAQ" PortUsImageOrientation="MF"/>
+      </DataSources>      
+      <OutputChannels>
+        <OutputChannel Id="MMF_VideoStream" VideoDataSourceId="Video_MMF" />
+        <OutputChannel Id="DAQ_VideoStream" VideoDataSourceId="Video_DAQ" />
+      </OutputChannels>
+    </Device>
+  </DataCollection>
+
+  <CoordinateDefinitions>
+    <Transform From="Image" To="Reference"
+      Matrix="
+        -0.5 0 0 0
+        0 -0.5 0 0
+        0 0 0.5 0
+        0 0 0 1" />
+
+    <Transform From="Image2" To="Reference"
+      Matrix="
+        -0.5 0 0 0
+        0 -0.5 0 0
+        0 0 0.5 100
+        0 0 0 1" />
+
+  </CoordinateDefinitions>
+
+  <PlusOpenIGTLinkServer
+    MaxNumberOfIgtlMessagesToSend="1"
+    MaxTimeSpentWithProcessingMs="33"
+    ListeningPort="18945"
+    SendValidTransformsOnly="true"
+    OutputChannelId="MMF_VideoStream" >
+    <DefaultClientInfo>
+      <MessageTypes>
+        <Message Type="IMAGE" />
+      </MessageTypes>
+      <ImageNames>
+        <Image Name="Image" EmbeddedTransformToFrame="Reference" />
+      </ImageNames>
+    </DefaultClientInfo>
+  </PlusOpenIGTLinkServer>
+
+  <PlusOpenIGTLinkServer
+    MaxNumberOfIgtlMessagesToSend="1"
+    MaxTimeSpentWithProcessingMs="33"
+    ListeningPort="18944"
+    SendValidTransformsOnly="true"
+    OutputChannelId="DAQ_VideoStream" >
+    <DefaultClientInfo>
+      <MessageTypes>
+        <Message Type="IMAGE" />
+      </MessageTypes>
+      <ImageNames>
+        <Image Name="Image2" EmbeddedTransformToFrame="Reference" />
+      </ImageNames>
+    </DefaultClientInfo>
+  </PlusOpenIGTLinkServer>
+
+</PlusConfiguration>
