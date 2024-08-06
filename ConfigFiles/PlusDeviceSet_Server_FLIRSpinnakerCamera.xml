@@ -9,6 +9,7 @@
       Id="VideoDevice"
       Type="FLIRSpinnakerCam" 
       ExposureTime="100"
+	  VideoFormat = "Mono8"
       TimeBaseExposure="2"
       >
       <DataSources>
