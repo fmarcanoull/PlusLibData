@@ -19,7 +19,7 @@
             <name>Grabber.Channel</name>
             <module>grabber</module>
             <type>string</type>
-            <value>ui</value>
+            <value>70:f8:e7:b0:06:64</value>
         </feature>
         <!-- Sensor features -->
         <feature>
