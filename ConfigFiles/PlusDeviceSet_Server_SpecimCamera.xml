@@ -9,7 +9,7 @@
       Id="VideoDevice"
       Type="SpecimCam"
       Model="FX17e"	  
-      ProfilesDirectory="../config">
+      ProfilesDirectory="../config/SpecimFX17e">
       <DataSources>
         <DataSource Type="Video" Id="Video" PortUsImageOrientation="UF"/>
       </DataSources>
