@@ -9,7 +9,8 @@
       Id="VideoDevice"
       Type="SpecimCam"
       Model="FX17e"	  
-      ProfilesDirectory="../config/SpecimFX17e">
+      ProfilesDirectory="../config/SpecimFX17e"
+      LicenseFile="../config/SpecimFX17e/a0cec8ee1816_1g.lic">
       <DataSources>
         <DataSource Type="Video" Id="Video" PortUsImageOrientation="UF"/>
       </DataSources>
