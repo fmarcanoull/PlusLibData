@@ -1,17 +1,16 @@
  <PlusConfiguration version="2.1">
-
+ <!-- In Device attributes, the second value after comma in the string, is the Stopacquisition parameter value -->
   <DataCollection StartupDelaySec="1.0" >
     <DeviceSet
-      Name="PlusServer: FLIR Systems Spinnaker Camera"
-      Description="Broadcasting acquired video through PlusServer from a FLIR Camera"
+      Name="PlusServer: Specim Camera"
+      Description="Broadcasting acquired video through PlusServer from a Specim Camera"
     />
-    <Device
+    <Device 
       Id="VideoDevice"
-      Type="FLIRSpinnakerCam" 
-      ExposureTime="100"
-	  VideoFormat = "Mono8"
-      TimeBaseExposure="2"
-      >
+      Type="SpecimCam"
+      Model="FX17e"	  
+      ProfilesDirectory="../config/SpecimFX17e"
+      LicenseFile="../config/SpecimFX17e/a0cec8ee1816_1g.lic">
       <DataSources>
         <DataSource Type="Video" Id="Video" PortUsImageOrientation="UF"/>
       </DataSources>
